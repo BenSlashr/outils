@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outils SEO - SLASHR | Agence SEO à Lille</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, p, a, li, span {
+            font-family: "Roboto", Sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .logo, nav ul li a {
+            font-family: "Prompt", Sans-serif;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(26, 26, 26, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: #ff4d4d;
+        }
+        
+        nav ul li a.active::after {
+            width: 100%;
+            background-color: #ff4d4d;
+        }
+        
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .tools-button {
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .tools-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .cta-button {
+            background-color: #5d3fd3;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(93, 63, 211, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button:hover {
+            background-color: #4a32a8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(93, 63, 211, 0.4);
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::after {
+            transform: translateX(100%);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 5% 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(93, 63, 211, 0.3) 0%, rgba(255, 77, 77, 0.3) 100%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #ff4d4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+        
+        .agency-label {
+            color: #ff4d4d;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: rgba(255, 77, 77, 0.1);
+            border-radius: 20px;
+            letter-spacing: 1px;
+            border-left: 3px solid #ff4d4d;
+        }
+        
+        /* Tools Section */
+        .tools-section {
+            padding: 100px 5%;
+            background-color: #f9f5f0;
+            color: #1a1a1a;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(to right, #5d3fd3, #ff4d4d);
+            border-radius: 3px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 3px;
+            animation: slide 3s infinite;
+        }
+        
+        @keyframes slide {
+            0% { left: calc(50% - 60px); }
+            50% { left: calc(50% + 60px); }
+            100% { left: calc(50% - 60px); }
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Search and filter section */
+        .search-filter {
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: "Roboto", Sans-serif;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #5d3fd3;
+            box-shadow: 0 0 15px rgba(93, 63, 211, 0.1);
+        }
+        
+        .search-button {
+            background-color: #5d3fd3;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 0 30px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Prompt", Sans-serif;
+            font-weight: 500;
+        }
+        
+        .search-button:hover {
+            background-color: #4a32a8;
+            transform: translateY(-2px);
+        }
+        
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .filter-tag {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .filter-tag:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .filter-tag.active {
+            background-color: #5d3fd3;
+            color: white;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #5d3fd3, #ff4d4d);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(93, 63, 211, 0.15);
+        }
+        
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .tool-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .tool-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #5d3fd3;
+            transition: width 0.3s ease;
+        }
+        
+        .tool-card:hover h3::after {
+            width: 60px;
+        }
+        
+        .tool-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .tool-icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+            color: #5d3fd3;
+            background: linear-gradient(135deg, #5d3fd3, #ff4d4d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #231915;
+            padding: 80px 5% 30px;
+            color: #999;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-logo-column {
+            flex: 1.5;
+        }
+        
+        .footer-logo {
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .footer-address p, 
+        .footer-contact p {
+            margin-bottom: 5px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .footer-contact {
+            margin-top: 20px;
+        }
+        
+        .footer-contact a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-contact a:hover {
+            color: #5d3fd3;
+        }
+        
+        .footer-column h4 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #5d3fd3;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #5d3fd3;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #4a32a8;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copyright p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #5d3fd3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(93, 63, 211, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #ff4d4d;
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                margin-top: 20px;
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+                gap: 10px;
+            }
+            
+            .tools-button, .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-button {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/" class="logo"><img src="https://agence-slashr.fr/wp-content/uploads/2023/10/slashr-logo-white.svg" alt="SLASHR" width="120"></a>
+        <nav>
+            <ul>
+                <li><a href="/">ACCUEIL</a></li>
+                <li><a href="/agence-seo-a-lille">AGENCE SEO À LILLE</a></li>
+                <li><a href="/cas-clients">CAS CLIENTS</a></li>
+                <li><a href="/blog">BLOG</a></li>
+                <li><a href="/outils" class="active">OUTILS</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <a href="#tools-section" class="tools-button">VOIR LES OUTILS</a>
+            <a href="/prendre-rdv" class="cta-button">PRENDRE RDV</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="agency-label">AGENCE SEARCH MARKETING & SEO</span>
+                <h1>NOS OUTILS SEO EXCLUSIFS</h1>
+                <p>Découvrez notre gamme d'outils SEO développés en interne pour optimiser votre référencement naturel et vous aider à atteindre les meilleures positions dans les moteurs de recherche.</p>
+                <a href="/prendre-rdv" class="cta-button">PRENDRE RDV →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools-section" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">NOS OUTILS SEO</h2>
+            
+            <div class="search-filter">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Rechercher un outil SEO..." id="searchInput">
+                    <button class="search-button">Rechercher</button>
+                </div>
+                <div class="filter-tags">
+                    <div class="filter-tag" data-tag="all">Tous</div>
+                    <div class="filter-tag" data-tag="maillage">Maillage interne</div>
+                    <div class="filter-tag" data-tag="redaction">Rédaction</div>
+                    <div class="filter-tag" data-tag="entites">Entités</div>
+                    <div class="filter-tag" data-tag="cannibalisation">Cannibalisation</div>
+                    <div class="filter-tag" data-tag="title">Title & meta description</div>
+                </div>
+            </div>
+            
+            <div class="tools-grid">
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">🔍</div>
+                <h3>Classification de mots-clés</h3>
+                <p>Notre outil de classification de mots-clés vous permet d'organiser et de hiérarchiser vos termes de recherche pour une stratégie SEO plus efficace.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="maillage">
+                <div class="tool-icon">🔄</div>
+                <h3>Plan de maillage automatique avant publication</h3>
+                <p>Optimisez votre maillage interne avant même de publier vos contenus grâce à notre outil qui suggère automatiquement les liens pertinents.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="maillage">
+                <div class="tool-icon">📊</div>
+                <h3>Plan de maillage automatique avec pagerank</h3>
+                <p>Améliorez la distribution du PageRank sur votre site avec notre outil qui analyse et optimise votre maillage interne en fonction de l'autorité des pages.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="entites">
+                <div class="tool-icon">🧩</div>
+                <h3>Analyse d'entités</h3>
+                <p>Identifiez et exploitez les entités sémantiques pour enrichir vos contenus et améliorer votre pertinence aux yeux des moteurs de recherche.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="cannibalisation">
+                <div class="tool-icon">⚠️</div>
+                <h3>Analyse de la cannibalisation</h3>
+                <p>Détectez et résolvez les problèmes de cannibalisation de mots-clés qui peuvent nuire à votre référencement naturel.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">📡</div>
+                <h3>Site Radius</h3>
+                <p>Explorez et analysez l'écosystème de votre site web pour identifier les opportunités d'amélioration et de développement.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="title">
+                <div class="tool-icon">🏷️</div>
+                <h3>Analyse des balises title</h3>
+                <p>Optimisez vos balises title pour améliorer votre CTR et votre positionnement dans les résultats de recherche.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">📝</div>
+                <h3>Brief de contenu</h3>
+                <p>Créez des briefs de contenu complets et optimisés pour guider la rédaction de contenus performants en SEO.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">🗂️</div>
+                <h3>Classification de mots-clés par page</h3>
+                <p>Organisez et attribuez vos mots-clés à des pages spécifiques pour une stratégie de contenu cohérente et efficace.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo-column">
+                    <a href="/" class="footer-logo"><img src="https://agence-slashr.fr/wp-content/uploads/2023/10/slashr-logo-white.svg" alt="SLASHR" width="120"></a>
+                    <div class="footer-address">
+                        <p>60 rue François 1er, 75008 PARIS</p>
+                        <p>165 avenue de Bretagne, 59800 LILLE</p>
+                    </div>
+                    <div class="footer-contact">
+                        <p><a href="tel:+33632997719">(+33) 06 32 99 77 19</a></p>
+                        <p><a href="mailto:hello@slashr.fr">hello@slashr.fr</a></p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>AGENCE SEO SLASHR</h4>
+                    <ul>
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/qui-sommes-nous/">Qui sommes-nous ?</a></li>
+                        <li><a href="/mentions-legales/">Mentions légales</a></li>
+                        <li><a href="/politique-de-cookies-ue/">Confidentialité</a></li>
+                        <li><a href="/recrutement/">Nous rejoindre</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>NOS RESSOURCES</h4>
+                    <ul>
+                        <li><a href="/cas-clients/">Cas clients</a></li>
+                        <li><a href="https://agence-slashr.fr/seo/prestations/#1">Prestations et services SEO</a></li>
+                        <li><a href="/seo/prestations/ecommerce/#1">Agence SEO E-commerce</a></li>
+                        <li><a href="/seo/prestations/seo-international/#1">Agence SEO International</a></li>
+                        <li><a href="/seo/prestations/prestashop/#1">Agence SEO Prestashop</a></li>
+                        <li><a href="/seo/prestations/magento/#1">Agence SEO Magento</a></li>
+                        <li><a href="/seo/prestations/shopify/#1">Agence SEO Shopify</a></li>
+                        <li><a href="/seo/prestations/local/#1">Agence SEO Local</a></li>
+                        <li><a href="https://agence-slashr.fr/seo/prestations/framer/#1">Agence SEO Framer</a></li>
+                        <li><a href="/seo/#1">Agence Référencement Naturel Lille</a></li>
+                        <li><a href="https://agence-slashr.fr/seo/prestations/refonte/">Accompagnement SEO Migration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Présenté fièrement par l'équipe de SLASHR</h4>
+                    <div class="social-icons">
+                        <a href="https://fr.linkedin.com/company/slashr-agence-seo" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@agence-slashr/videos" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Slashr.fr - édité par la société ETYB TDS</p>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for header height
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Active menu item
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLocation = window.location.pathname;
+            const menuItems = document.querySelectorAll('nav ul li a');
+            
+            menuItems.forEach(item => {
+                if (item.getAttribute('href') === currentLocation) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Filter functionality
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const toolCards = document.querySelectorAll('.tool-card');
+            const searchInput = document.getElementById('searchInput');
+            
+            // Set 'all' as active by default
+            document.querySelector('.filter-tag[data-tag="all"]').classList.add('active');
+            
+            // Filter by tag
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    // Remove active class from all tags
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tag
+                    tag.classList.add('active');
+                    
+                    const selectedTag = tag.getAttribute('data-tag');
+                    
+                    // Show all tools if 'all' is selected
+                    if (selectedTag === 'all') {
+                        toolCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    } else {
+                        // Show only tools with matching tag
+                        toolCards.forEach(card => {
+                            if (card.getAttribute('data-tags').includes(selectedTag)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                toolCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Reset active filter tag to 'all'
+                filterTags.forEach(t => t.classList.remove('active'));
+                document.querySelector('.filter-tag[data-tag="all"]').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
