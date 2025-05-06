@@ -405,8 +405,29 @@
         }
         
         .tool-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(93, 63, 211, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tool-title-link {
+            color: #6a3de8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .tool-title-link:hover {
+            color: #4a2ba8;
+            text-decoration: underline;
+        }
+        
+        .coming-soon {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            color: #666;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
         
         .tool-card:hover::before {
@@ -682,11 +703,11 @@
         <nav>
             <ul>
                 <li><a href="/">ACCUEIL</a></li>
-                <li><a href="/agence-seo-a-lille">AGENCE SEO À LILLE</a></li>
-                <li><a href="/cas-clients">CAS CLIENTS</a></li>
-                <li><a href="/blog">BLOG</a></li>
-                <li><a href="/outils" class="active">OUTILS</a></li>
-                <li><a href="/contact">CONTACT</a></li>
+                <li><a href="https://agence-slashr.fr/seo/">AGENCE SEO À LILLE</a></li>
+                <li><a href="https://agence-slashr.fr/cas-clients/">CAS CLIENTS</a></li>
+                <li><a href="https://agence-slashr.fr/blog/">BLOG</a></li>
+                <li><a href="https://agence-slashr.fr/outils/" class="active">OUTILS</a></li>
+                <li><a href="https://agence-slashr.fr/contact/">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-buttons">
@@ -724,62 +745,109 @@
                     <div class="filter-tag" data-tag="entites">Entités</div>
                     <div class="filter-tag" data-tag="cannibalisation">Cannibalisation</div>
                     <div class="filter-tag" data-tag="title">Title & meta description</div>
+                    <div class="filter-tag" data-tag="serp">Analyse SERP</div>
+                    <div class="filter-tag" data-tag="robots">Robots.txt</div>
+                    <div class="filter-tag" data-tag="clustering">Clustering</div>
                 </div>
             </div>
             
             <div class="tools-grid">
-            <div class="tool-card" data-tags="redaction">
+            <div class="tool-card" data-tags="redaction serp">
                 <div class="tool-icon">🔍</div>
-                <h3>Classification de mots-clés</h3>
-                <p>Notre outil de classification de mots-clés vous permet d'organiser et de hiérarchiser vos termes de recherche pour une stratégie SEO plus efficace.</p>
+                <h3><a href="/comparateur-serp/" class="tool-title-link">Comparateur SERP</a></h3>
+                <p>Comparez et analysez les résultats de recherche pour mieux comprendre le positionnement de votre site et celui de vos concurrents.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction serp">
+                <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                <h3><a href="/analyse-serp/" class="tool-title-link">Analyse SERP</a></h3>
+                <p>Analysez en profondeur les pages de résultats des moteurs de recherche pour identifier les opportunités d'optimisation.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction entites">
+                <div class="tool-icon">📡</div>
+                <h3><a href="/siteradius/" class="tool-title-link">SiteRadius</a></h3>
+                <p>Analysez la cohérence sémantique de votre site pour améliorer sa pertinence globale et son positionnement.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">✏️</div>
+                <h3><a href="/content-writer/" class="tool-title-link">Content Writer</a></h3>
+                <p>Créez des contenus optimisés pour le SEO avec notre outil d'aide à la rédaction intelligent.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="entites">
+                <div class="tool-icon">🔗</div>
+                <h3><a href="/kg-explorer/" class="tool-title-link">KG Explorer</a></h3>
+                <p>Explorez les graphes de connaissances pour enrichir vos contenus avec des entités pertinentes.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction robots">
+                <div class="tool-icon">🔧</div>
+                <h3><a href="/robots-checker/" class="tool-title-link">Robots Checker</a></h3>
+                <p>Vérifiez et optimisez votre fichier robots.txt pour un meilleur crawl de votre site.</p>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction clustering">
+                <div class="tool-icon">🔍</div>
+                <h3><a href="/clustering-kw/" class="tool-title-link">Clustering de mots-clés</a></h3>
+                <p>Regroupez vos mots-clés par thématiques pour une stratégie de contenu plus cohérente.</p>
             </div>
             
             <div class="tool-card" data-tags="maillage">
-                <div class="tool-icon">🔄</div>
-                <h3>Plan de maillage automatique avant publication</h3>
+                <div class="tool-icon"><i class="fas fa-sitemap"></i></div>
+                <h3><a href="http://51.75.124.6:8004" class="tool-title-link">Maillage Prépub</a></h3>
                 <p>Optimisez votre maillage interne avant même de publier vos contenus grâce à notre outil qui suggère automatiquement les liens pertinents.</p>
             </div>
             
             <div class="tool-card" data-tags="maillage">
-                <div class="tool-icon">📊</div>
-                <h3>Plan de maillage automatique avec pagerank</h3>
+                <div class="tool-icon"><i class="fas fa-project-diagram"></i></div>
+                <h3><a href="http://51.75.124.6:8003" class="tool-title-link">Maillage PageRank</a></h3>
                 <p>Améliorez la distribution du PageRank sur votre site avec notre outil qui analyse et optimise votre maillage interne en fonction de l'autorité des pages.</p>
             </div>
             
+            <div class="tool-card" data-tags="redaction clustering">
+                <div class="tool-icon">📂</div>
+                <h3><a href="http://51.75.124.6:8002/" class="tool-title-link">Classification de mots-clés</a></h3>
+                <p>Organisez et hiérarchisez vos termes de recherche pour une stratégie SEO plus efficace.</p>
+            </div>
+            
             <div class="tool-card" data-tags="entites">
-                <div class="tool-icon">🧩</div>
-                <h3>Analyse d'entités</h3>
+                <div class="tool-icon">🔍</div>
+                <h3><a href="/analyse-entites/" class="tool-title-link">Analyse d'entités</a></h3>
                 <p>Identifiez et exploitez les entités sémantiques pour enrichir vos contenus et améliorer votre pertinence aux yeux des moteurs de recherche.</p>
             </div>
             
             <div class="tool-card" data-tags="cannibalisation">
                 <div class="tool-icon">⚠️</div>
-                <h3>Analyse de la cannibalisation</h3>
+                <h3><a href="http://51.75.124.6:8040/" class="tool-title-link">Analyse de cannibalisation</a></h3>
                 <p>Détectez et résolvez les problèmes de cannibalisation de mots-clés qui peuvent nuire à votre référencement naturel.</p>
             </div>
             
             <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon">📡</div>
-                <h3>Site Radius</h3>
-                <p>Explorez et analysez l'écosystème de votre site web pour identifier les opportunités d'amélioration et de développement.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="title">
-                <div class="tool-icon">🏷️</div>
-                <h3>Analyse des balises title</h3>
-                <p>Optimisez vos balises title pour améliorer votre CTR et votre positionnement dans les résultats de recherche.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction">
                 <div class="tool-icon">📝</div>
-                <h3>Brief de contenu</h3>
+                <h3><a href="/brief-contenu/" class="tool-title-link">Brief de contenu</a></h3>
                 <p>Créez des briefs de contenu complets et optimisés pour guider la rédaction de contenus performants en SEO.</p>
             </div>
             
+            <div class="tool-card" data-tags="title">
+                <div class="tool-icon"><i class="fas fa-heading"></i></div>
+                <h3><a href="/title/" class="tool-title-link">Title</a></h3>
+                <p>Analysez et optimisez vos balises title basé sur les données GSC et l'intelligence artificielle.</p>
+            </div>
+            
             <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon">🗂️</div>
-                <h3>Classification de mots-clés par page</h3>
-                <p>Organisez et attribuez vos mots-clés à des pages spécifiques pour une stratégie de contenu cohérente et efficace.</p>
+                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Rédaction FP (à venir)</h3>
+                <p>Outil de rédaction optimisé pour les fiches produits, bientôt disponible.</p>
+                <span class="coming-soon">Bientôt disponible</span>
+            </div>
+            
+            <div class="tool-card" data-tags="redaction">
+                <div class="tool-icon">📅</div>
+                <h3>Plan de publication (à venir)</h3>
+                <p>Utilisez l'IA pour définir l'ordre de publication des articles le plus optimisé pour votre stratégie SEO.</p>
+                <span class="coming-soon">Bientôt disponible</span>
             </div>
         </div>
     </section>
