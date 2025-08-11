@@ -294,13 +294,81 @@
             100% { left: calc(50% - 60px); }
         }
         
+        .tools-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            margin-top: 50px;
+        }
+        
+        .tools-category {
+            position: relative;
+        }
+        
+        .category-title {
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .category-title.free {
+            color: #5d3fd3;
+        }
+        
+        .category-title.premium {
+            color: #333;
+        }
+        
+        .category-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            border-radius: 2px;
+        }
+        
+        .category-title.free::before {
+            background-color: #5d3fd3;
+        }
+        
+        .category-title.premium::before {
+            background-color: #ff4d4d;
+        }
+        
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            margin-top: 50px;
             position: relative;
             z-index: 2;
+        }
+        
+        .premium-section {
+            position: relative;
+            padding: 40px;
+            border-radius: 16px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .premium-badge {
+            display: inline-block;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
         }
         
         /* Search and filter section */
@@ -354,6 +422,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 20px;
+            justify-content: center;
         }
         
         .filter-tag {
@@ -391,6 +460,30 @@
             flex-direction: column;
         }
         
+        .tool-card.premium {
+            background-color: white;
+            border: 2px solid #ff4d4d;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .tool-card.premium h3 {
+            color: #333;
+        }
+        
+        .tool-card.premium p {
+            color: #666;
+        }
+        
+        .tool-card.premium .tool-icon {
+            color: #ff4d4d;
+            background: linear-gradient(135deg, #ff4d4d, #5d3fd3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
         .tool-card::before {
             content: '';
             position: absolute;
@@ -404,9 +497,17 @@
             transition: transform 0.4s ease;
         }
         
+        .tool-card.premium::before {
+            background: linear-gradient(90deg, #ff4d4d, #5d3fd3);
+        }
+        
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-card.premium:hover {
+            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
         }
         
         .tool-title-link {
@@ -418,6 +519,25 @@
         .tool-title-link:hover {
             color: #4a2ba8;
             text-decoration: underline;
+        }
+        
+        .tool-card.premium .tool-title-link {
+            color: #333;
+        }
+        
+        .tool-card.premium .tool-title-link:hover {
+            color: #ff4d4d;
+        }
+        
+        .premium-lock {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 16px;
+            color: #ff4d4d;
+            background-color: rgba(255, 77, 77, 0.1);
+            padding: 4px 6px;
+            border-radius: 4px;
         }
         
         .coming-soon {
@@ -452,6 +572,10 @@
             height: 3px;
             background-color: #5d3fd3;
             transition: width 0.3s ease;
+        }
+        
+        .tool-card.premium h3::after {
+            background-color: #ff4d4d;
         }
         
         .tool-card:hover h3::after {
@@ -712,7 +836,7 @@
         </nav>
         <div class="header-buttons">
             <a href="#tools-section" class="tools-button">VOIR LES OUTILS</a>
-            <a href="/prendre-rdv" class="cta-button">PRENDRE RDV</a>
+            <a href="https://calendly.com/quentin-slashr/appel-de-decouverte-client-by-slashr?back=1" class="cta-button">PRENDRE RDV</a>
         </div>
     </header>
 
@@ -723,7 +847,7 @@
                 <span class="agency-label">AGENCE SEARCH MARKETING & SEO</span>
                 <h1>NOS OUTILS SEO EXCLUSIFS</h1>
                 <p>Découvrez notre gamme d'outils SEO développés en interne pour optimiser votre référencement naturel et vous aider à atteindre les meilleures positions dans les moteurs de recherche.</p>
-                <a href="/prendre-rdv" class="cta-button">PRENDRE RDV →</a>
+                <a href="https://calendly.com/quentin-slashr/appel-de-decouverte-client-by-slashr?back=1" class="cta-button">PRENDRE RDV →</a>
             </div>
         </div>
     </section>
@@ -740,114 +864,176 @@
                 </div>
                 <div class="filter-tags">
                     <div class="filter-tag" data-tag="all">Tous</div>
-                    <div class="filter-tag" data-tag="maillage">Maillage interne</div>
-                    <div class="filter-tag" data-tag="redaction">Rédaction</div>
-                    <div class="filter-tag" data-tag="entites">Entités</div>
-                    <div class="filter-tag" data-tag="cannibalisation">Cannibalisation</div>
-                    <div class="filter-tag" data-tag="title">Title & meta description</div>
+                    <div class="filter-tag" data-tag="gratuit">Gratuits</div>
+                    <div class="filter-tag" data-tag="premium">Premium</div>
+                    <div class="filter-tag" data-tag="semantique">Sémantique</div>
+                    <div class="filter-tag" data-tag="ia">Intelligence Artificielle</div>
+                    <div class="filter-tag" data-tag="mots-cles">Mots-clés</div>
                     <div class="filter-tag" data-tag="serp">Analyse SERP</div>
-                    <div class="filter-tag" data-tag="robots">Robots.txt</div>
-                    <div class="filter-tag" data-tag="clustering">Clustering</div>
+                    <div class="filter-tag" data-tag="entites">Entités</div>
+                    <div class="filter-tag" data-tag="maillage">Maillage</div>
+                    <div class="filter-tag" data-tag="redaction">Rédaction</div>
                 </div>
             </div>
             
-            <div class="tools-grid">
-            <div class="tool-card" data-tags="redaction serp">
-                <div class="tool-icon">🔍</div>
-                <h3><a href="/comparateur-serp/" class="tool-title-link">Comparateur SERP</a></h3>
-                <p>Comparez et analysez les résultats de recherche pour mieux comprendre le positionnement de votre site et celui de vos concurrents.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction serp">
-                <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
-                <h3><a href="/analyse-serp/" class="tool-title-link">Analyse SERP</a></h3>
-                <p>Analysez en profondeur les pages de résultats des moteurs de recherche pour identifier les opportunités d'optimisation.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction entites">
-                <div class="tool-icon">📡</div>
-                <h3><a href="/siteradius/" class="tool-title-link">SiteRadius</a></h3>
-                <p>Analysez la cohérence sémantique de votre site pour améliorer sa pertinence globale et son positionnement.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon">✏️</div>
-                <h3><a href="/content-writer/" class="tool-title-link">Content Writer</a></h3>
-                <p>Créez des contenus optimisés pour le SEO avec notre outil d'aide à la rédaction intelligent.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="entites">
-                <div class="tool-icon">🔗</div>
-                <h3><a href="/kg-explorer/" class="tool-title-link">KG Explorer</a></h3>
-                <p>Explorez les graphes de connaissances pour enrichir vos contenus avec des entités pertinentes.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction robots">
-                <div class="tool-icon">🔧</div>
-                <h3><a href="/robots-checker/" class="tool-title-link">Robots Checker</a></h3>
-                <p>Vérifiez et optimisez votre fichier robots.txt pour un meilleur crawl de votre site.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction clustering">
-                <div class="tool-icon">🔍</div>
-                <h3><a href="/clustering-kw/" class="tool-title-link">Clustering de mots-clés</a></h3>
-                <p>Regroupez vos mots-clés par thématiques pour une stratégie de contenu plus cohérente.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="maillage">
-                <div class="tool-icon"><i class="fas fa-sitemap"></i></div>
-                <h3><a href="http://51.75.124.6:8004" class="tool-title-link">Maillage Prépub</a></h3>
-                <p>Optimisez votre maillage interne avant même de publier vos contenus grâce à notre outil qui suggère automatiquement les liens pertinents.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="maillage">
-                <div class="tool-icon"><i class="fas fa-project-diagram"></i></div>
-                <h3><a href="http://51.75.124.6:8003" class="tool-title-link">Maillage PageRank</a></h3>
-                <p>Améliorez la distribution du PageRank sur votre site avec notre outil qui analyse et optimise votre maillage interne en fonction de l'autorité des pages.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction clustering">
-                <div class="tool-icon">📂</div>
-                <h3><a href="http://51.75.124.6:8002/" class="tool-title-link">Classification de mots-clés</a></h3>
-                <p>Organisez et hiérarchisez vos termes de recherche pour une stratégie SEO plus efficace.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="entites">
-                <div class="tool-icon">🔍</div>
-                <h3><a href="/analyse-entites/" class="tool-title-link">Analyse d'entités</a></h3>
-                <p>Identifiez et exploitez les entités sémantiques pour enrichir vos contenus et améliorer votre pertinence aux yeux des moteurs de recherche.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="cannibalisation">
-                <div class="tool-icon">⚠️</div>
-                <h3><a href="http://51.75.124.6:8040/" class="tool-title-link">Analyse de cannibalisation</a></h3>
-                <p>Détectez et résolvez les problèmes de cannibalisation de mots-clés qui peuvent nuire à votre référencement naturel.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon">📝</div>
-                <h3><a href="/brief-contenu/" class="tool-title-link">Brief de contenu</a></h3>
-                <p>Créez des briefs de contenu complets et optimisés pour guider la rédaction de contenus performants en SEO.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="title">
-                <div class="tool-icon"><i class="fas fa-heading"></i></div>
-                <h3><a href="/title/" class="tool-title-link">Title</a></h3>
-                <p>Analysez et optimisez vos balises title basé sur les données GSC et l'intelligence artificielle.</p>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon"><i class="fas fa-file-alt"></i></div>
-                <h3>Rédaction FP (à venir)</h3>
-                <p>Outil de rédaction optimisé pour les fiches produits, bientôt disponible.</p>
-                <span class="coming-soon">Bientôt disponible</span>
-            </div>
-            
-            <div class="tool-card" data-tags="redaction">
-                <div class="tool-icon">📅</div>
-                <h3>Plan de publication (à venir)</h3>
-                <p>Utilisez l'IA pour définir l'ordre de publication des articles le plus optimisé pour votre stratégie SEO.</p>
-                <span class="coming-soon">Bientôt disponible</span>
+            <div class="tools-categories">
+                <div class="tools-category">
+                    <h3 class="category-title free">Outils Gratuits</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card" data-tags="entites analyse serp mots-cles">
+                            <div class="tool-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/entity/" class="tool-title-link" target="_blank" rel="noopener noreferrer">Analyse entité</a></h3>
+                            <p>Analyse entité d'une URL et de la SERP en fonction d'un KW.</p>
+                        </div>
+
+                        <div class="tool-card" data-tags="robots checker technique">
+                            <div class="tool-icon"><i class="fa-solid fa-robot"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/robots/" class="tool-title-link" target="_blank" rel="noopener noreferrer">Robots.txt checker</a></h3>
+                            <p>Permet de vérifier les règles robots.txt.</p>
+                        </div>
+
+                        <div class="tool-card" data-tags="serp intention analyse">
+                            <div class="tool-icon"><i class="fa-solid fa-compass"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/analyse-serp/" class="tool-title-link" target="_blank" rel="noopener noreferrer">Analyse intention SERP</a></h3>
+                            <p>Permet d'analyser la SERP et de comprendre l'intention derrière votre mot-clé.</p>
+                        </div>
+
+                        <div class="tool-card" data-tags="serp comparaison pages">
+                            <div class="tool-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/comparateur-serp/" class="tool-title-link" target="_blank" rel="noopener noreferrer">1 ou 2 pages - Analyse SERP</a></h3>
+                            <p>Permet de comparer les SERP et de comprendre s'il faut créer 1,2,3 pages en fonction de vos mots-clés.</p>
+                        </div>
+
+                        <div class="tool-card" data-tags="knowledge-graph entites recherche">
+                            <div class="tool-icon"><i class="fa-solid fa-sitemap"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/kg-explorer/" class="tool-title-link" target="_blank" rel="noopener noreferrer">Knowledge Graph Explorer</a></h3>
+                            <p>Permet d'explorer le knowledge graph de Google.</p>
+                        </div>
+
+                        <div class="tool-card" data-tags="site radius cohesion thematique audit">
+                            <div class="tool-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <h3><a href="https://outils.agence-slashr.fr/siteradius/" class="tool-title-link" target="_blank" rel="noopener noreferrer">Site Radius</a></h3>
+                            <p>Permet d'évaluer la pertinence et la cohérence thématique de votre site.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tools-category">
+                    <div class="premium-section">
+                        <div class="premium-badge">Réservé aux clients</div>
+                        <h3 class="category-title premium">Outils Premium</h3>
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <p style="color: #666; margin-bottom: 20px; font-size: 16px; line-height: 1.6;">Accédez à nos outils SEO les plus avancés en devenant client SLASHR</p>
+                            <a href="/prendre-rdv" class="cta-button">DEVENIR CLIENT →</a>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="tool-card premium" data-tags="brief contenu generation">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div>
+                                <h3><span class="tool-title-link">Brief Generator</span></h3>
+                                <p>Création de brief de contenu auto.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="seo analyse cannibalisation">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-clone"></i></div>
+                                <h3><span class="tool-title-link">Analyse de Cannibalisation SEO</span></h3>
+                                <p>Génération d'un rapport sur la cannibalisation de votre site.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="title balises optimisation">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-heading"></i></div>
+                                <h3><span class="tool-title-link">Analyse title</span></h3>
+                                <p>Analyse les title et génère des nouveaux en fonction de vos mots-clés.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="redaction ia contenu">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-feather"></i></div>
+                                <h3><span class="tool-title-link">Content Writer</span></h3>
+                                <p>Outil d'aide à la rédaction SEO.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="redaction ecommerce fiches-produits categories ia">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-store"></i></div>
+                                <h3><span class="tool-title-link">Rédaction E-commerce</span></h3>
+                                <p>Rédige des textes catégories et des fiches produits optimisés.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="clustering ia mots-cles embedding">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-object-group"></i></div>
+                                <h3><span class="tool-title-link">Clustering KW</span></h3>
+                                <p>Clustering auto de KW selon embedding.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="mapping mots-cles urls">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                <h3><span class="tool-title-link">Mapping</span></h3>
+                                <p>Mapping de KW en fonction d'URL.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="redirection migration plan">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-route"></i></div>
+                                <h3><span class="tool-title-link">Redirection Tool</span></h3>
+                                <p>Plan de redirection automatique.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="maillage prepublication ia">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-link"></i></div>
+                                <h3><span class="tool-title-link">Maillage pré publication</span></h3>
+                                <p>Génère un plan de maillage sur des pages non publiées.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="maillage pagerank simulation">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                                <h3><span class="tool-title-link">Maillage Pagerank</span></h3>
+                                <p>Génère un plan de maillage sur des pages déjà publiées avec simulation de pagerank.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="serp scraping export">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-table"></i></div>
+                                <h3><span class="tool-title-link">SERP checker</span></h3>
+                                <p>Permet de scraper et d'exporter des SERP en masse.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="semantique analyse mots-cles">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-brain"></i></div>
+                                <h3><span class="tool-title-link">Analyse sémantique</span></h3>
+                                <p>Analyse la SERP et remonte les KW obligatoires et complémentaires à ajouter à son contenu pour ranker.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="llm monitoring positions ia ranker">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                <h3><span class="tool-title-link">AI Ranker</span></h3>
+                                <p>SaaS de monitoring positionnement LLM.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="dashboard semantique suivi pages">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                                <h3><span class="tool-title-link">Dashboard sémantique</span></h3>
+                                <p>Liste les pages de votre site web et évalue le % d'optimisation sémantique pour chacune d'entre elles.</p>
+                            </div>
+
+                            <div class="tool-card premium" data-tags="shopping ecommerce monitoring">
+                                <div class="premium-lock"><i class="fa-solid fa-lock"></i></div>
+                                <div class="tool-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                                <h3><span class="tool-title-link">Monitoring Google Shopping</span></h3>
+                                <p>Permet de monitorer les positions sur Google Shopping.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -962,6 +1148,8 @@
             const filterTags = document.querySelectorAll('.filter-tag');
             const toolCards = document.querySelectorAll('.tool-card');
             const searchInput = document.getElementById('searchInput');
+            const freeSection = document.querySelector('.tools-category:first-child');
+            const premiumSection = document.querySelector('.tools-category:last-child');
             
             // Set 'all' as active by default
             document.querySelector('.filter-tag[data-tag="all"]').classList.add('active');
@@ -982,8 +1170,34 @@
                         toolCards.forEach(card => {
                             card.style.display = 'block';
                         });
+                        freeSection.style.display = 'block';
+                        premiumSection.style.display = 'block';
+                    } else if (selectedTag === 'gratuit') {
+                        // Show only free tools
+                        freeSection.style.display = 'block';
+                        premiumSection.style.display = 'none';
+                        toolCards.forEach(card => {
+                            if (!card.classList.contains('premium')) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    } else if (selectedTag === 'premium') {
+                        // Show only premium tools
+                        freeSection.style.display = 'none';
+                        premiumSection.style.display = 'block';
+                        toolCards.forEach(card => {
+                            if (card.classList.contains('premium')) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
                     } else {
-                        // Show only tools with matching tag
+                        // Show tools with matching tag
+                        freeSection.style.display = 'block';
+                        premiumSection.style.display = 'block';
                         toolCards.forEach(card => {
                             if (card.getAttribute('data-tags').includes(selectedTag)) {
                                 card.style.display = 'block';
